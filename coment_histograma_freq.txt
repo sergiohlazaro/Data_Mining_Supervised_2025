@@ -1,0 +1,15 @@
+* Observaciones clave sobre la distribución de Freq:
+    1. Distribución muy sesgada:
+
+        - La mayoría de los valores están concentrados en valores bajos, con muchos países y años donde los incidentes son cercanos a 0.
+        - Hay pocos casos con valores extremadamente altos (outliers que llegan hasta 3,934 incidentes en un solo país y año).
+
+    2. Presencia de valores extremos:
+
+        - Algunos países y años tienen una cantidad desproporcionada de incidentes.
+        - Esto puede indicar que necesitamos normalizar o transformar los datos antes de aplicar modelos.
+
+    3. Posibles estrategias para la clasificación:
+
+        - Convertir Freq en categorías (Ejemplo: Bajo, Medio, Alto).
+        - Aplicar una transformación logarítmica para reducir el impacto de los valores extremos.
