@@ -5,27 +5,27 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.preprocessing import MinMaxScaler
 
-# Cargar el dataset
+                                                                                    # Cargar el dataset
 df = pd.read_csv("incidents.byCountryYr.csv")
 
 print("\n")
 print("El archivo contiene el siguiente número de filas y columnas:")
-print(df.shape)  # Muestra el número de filas y columnas
+print(df.shape)                                                                     # Muestra el número de filas y columnas
 print("-----------------------------------------------------------------------------------------------------------------------------------")
 
 print("\nEl archivo contiene las siguientes columnas:")
-print(df.columns)  # Lista los nombres de las columnas
+print(df.columns)                                                                   # Lista los nombres de las columnas
 print("-----------------------------------------------------------------------------------------------------------------------------------")
 
 print("\nEl archivo contiene los siguientes tipos de datos:")
-print(df.dtypes)  # Muestra los tipos de datos
+print(df.dtypes)                                                                    # Muestra los tipos de datos
 print("-----------------------------------------------------------------------------------------------------------------------------------")
 
-print("\nValores nulos por columna:\n", df.isnull().sum())  # Verifica valores nulos
-print("\nNúmero de filas duplicadas:", df.duplicated().sum())  # Verifica duplicados
+print("\nValores nulos por columna:\n", df.isnull().sum())                          # Verifica valores nulos
+print("\nNúmero de filas duplicadas:", df.duplicated().sum())                       # Verifica duplicados
 
 print("\nEstadísticas descriptivas:")
-print(df.describe())  # Muestra estadísticas descriptivas
+print(df.describe())                                                                # Muestra estadísticas descriptivas
 print("-----------------------------------------------------------------------------------------------------------------------------------")
 
 # --- ANÁLISIS EXPLORATORIO DE DATOS (EDA) ---
@@ -40,12 +40,12 @@ plt.ylabel("Frecuencia")
 plt.title("Distribución de la Frecuencia de Incidentes por País y Año")
 plt.grid(axis="y")
 
-plt.savefig("img/histograma_freq.png")
+plt.savefig("imgs1/histograma_freq.png")
 print("Gráfico guardado como 'histograma_freq.png'; Ábrelo manualmente.")
 print("-----------------------------------------------------------------------------------------------------------------------------------")
 
 # 2️. Transformación logarítmica de "Freq"
-df["Freq_log"] = np.log1p(df["Freq"])  # log(1+Freq) para evitar log(0)
+df["Freq_log"] = np.log1p(df["Freq"])                                               # log(1+Freq) para evitar log(0)
 
 plt.figure(figsize=(12, 5))
 sns.histplot(df["Freq_log"], bins=50, kde=True)
@@ -54,13 +54,13 @@ plt.ylabel("Frecuencia")
 plt.title("Distribución Logarítmica de la Frecuencia de Incidentes")
 plt.grid(axis="y")
 
-plt.savefig("img/histograma_freq_log.png")
+plt.savefig("imgs1/histograma_freq_log.png")
 print("Gráfico guardado como 'histograma_freq_log.png'; Ábrelo manualmente.")
 print("-----------------------------------------------------------------------------------------------------------------------------------")
 
 # 3️. Convertir "Freq" en categorías (Bajo, Medio, Alto)
-# Método más robusto con `cut()` para evitar errores con valores repetidos
-bins = [-1, 0, 10, 100, df["Freq"].max()]  # Definir cortes de categorías
+                                                                                    # Método más robusto con `cut()` para evitar errores con valores repetidos
+bins = [-1, 0, 10, 100, df["Freq"].max()]                                           # Definir cortes de categorías
 labels = ["Cero", "Bajo", "Medio", "Alto"]
 df["Freq_category"] = pd.cut(df["Freq"], bins=bins, labels=labels)
 
@@ -86,9 +86,7 @@ plt.ylabel("Total de Incidentes")
 plt.title("Evolución del Número de Incidentes por Año")
 plt.grid(True)
 
-plt.savefig("img/evolucion_incidentes.png")
+plt.savefig("imgs1/evolucion_incidentes.png")
 print("Gráfico guardado como 'evolucion_incidentes.png'; Ábrelo manualmente.")
 print("-----------------------------------------------------------------------------------------------------------------------------------")
-
-# Fin del script
 print("\n¡Análisis de datos completado!\n")
