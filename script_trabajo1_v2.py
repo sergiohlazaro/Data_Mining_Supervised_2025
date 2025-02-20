@@ -30,7 +30,7 @@ print("-------------------------------------------------------------------------
 
 # --- ANÁLISIS EXPLORATORIO DE DATOS (EDA) ---
 
-# 1️⃣ Distribución de la variable "Freq" (Filtrar valores positivos)
+# 1️. Distribución de la variable "Freq" (Filtrar valores positivos)
 df_filtered = df[df["Freq"] > 0]
 
 plt.figure(figsize=(12, 5))
@@ -40,11 +40,11 @@ plt.ylabel("Frecuencia")
 plt.title("Distribución de la Frecuencia de Incidentes por País y Año")
 plt.grid(axis="y")
 
-plt.savefig("histograma_freq.png")
+plt.savefig("img/histograma_freq.png")
 print("Gráfico guardado como 'histograma_freq.png'; Ábrelo manualmente.")
 print("-----------------------------------------------------------------------------------------------------------------------------------")
 
-# 2️⃣ Transformación logarítmica de "Freq"
+# 2️. Transformación logarítmica de "Freq"
 df["Freq_log"] = np.log1p(df["Freq"])  # log(1+Freq) para evitar log(0)
 
 plt.figure(figsize=(12, 5))
@@ -54,18 +54,21 @@ plt.ylabel("Frecuencia")
 plt.title("Distribución Logarítmica de la Frecuencia de Incidentes")
 plt.grid(axis="y")
 
-plt.savefig("histograma_freq_log.png")
+plt.savefig("img/histograma_freq_log.png")
 print("Gráfico guardado como 'histograma_freq_log.png'; Ábrelo manualmente.")
 print("-----------------------------------------------------------------------------------------------------------------------------------")
 
-# 3️⃣ Convertir "Freq" en categorías (Bajo, Medio, Alto)
-df["Freq_category"] = pd.qcut(df["Freq"], q=[0, 0.33, 0.66, 1.0], labels=["Bajo", "Medio", "Alto"])
+# 3️. Convertir "Freq" en categorías (Bajo, Medio, Alto)
+# Método más robusto con `cut()` para evitar errores con valores repetidos
+bins = [-1, 0, 10, 100, df["Freq"].max()]  # Definir cortes de categorías
+labels = ["Cero", "Bajo", "Medio", "Alto"]
+df["Freq_category"] = pd.cut(df["Freq"], bins=bins, labels=labels)
 
 print("\nDistribución de la variable categorizada 'Freq_category':")
 print(df["Freq_category"].value_counts())
 print("-----------------------------------------------------------------------------------------------------------------------------------")
 
-# 4️⃣ Normalizar "Freq" (Escalar entre 0 y 1)
+# 4️. Normalizar "Freq" (Escalar entre 0 y 1)
 scaler = MinMaxScaler()
 df["Freq_scaled"] = scaler.fit_transform(df[["Freq"]])
 
@@ -73,7 +76,7 @@ print("\nEstadísticas de la variable normalizada 'Freq_scaled':")
 print(df[["Freq", "Freq_scaled"]].describe())
 print("-----------------------------------------------------------------------------------------------------------------------------------")
 
-# 5️⃣ Evolución del número de incidentes por año
+# 5️. Evolución del número de incidentes por año
 incidents_by_year = df.groupby("iyear")["Freq"].sum()
 
 plt.figure(figsize=(12, 5))
@@ -83,7 +86,7 @@ plt.ylabel("Total de Incidentes")
 plt.title("Evolución del Número de Incidentes por Año")
 plt.grid(True)
 
-plt.savefig("evolucion_incidentes.png")
+plt.savefig("img/evolucion_incidentes.png")
 print("Gráfico guardado como 'evolucion_incidentes.png'; Ábrelo manualmente.")
 print("-----------------------------------------------------------------------------------------------------------------------------------")
 
