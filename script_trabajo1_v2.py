@@ -4,8 +4,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.preprocessing import MinMaxScaler
-
-                                                                                    # Cargar el dataset
+print("\n")
+print("1. Para empezar cargamos los datos y los prepararemos para el modelado:")
+print(" - Hay que cargar el dataset y explorarlo, al explorarlo revisaremos valores nulos y duplicados y corregiremos estos si los hay.")
+print(" - Por último, realizaremos un análisis exploratorio de datos (EDA) para entender mejor los datos generando una serie de gráficos.")
 df = pd.read_csv("incidents.byCountryYr.csv")
 
 print("\n")
@@ -90,3 +92,7 @@ plt.savefig("imgs1/evolucion_incidentes.png")
 print("Gráfico guardado como 'evolucion_incidentes.png'; Ábrelo manualmente.")
 print("-----------------------------------------------------------------------------------------------------------------------------------")
 print("\n¡Análisis de datos completado!\n")
+print("2. Ahora que hemos entendido los datos, podemos pasar a la fase de clasificación supervisada:") 
+print(" - Preparar los datos para el modelado.")
+print(" - Entrenar los modelos de clasificación (Naive Bayes, Árboles de Decisión, k-NN, Regresión Logística).")
+print(" - Evaluar el rendimiento de los modelos.\n")
