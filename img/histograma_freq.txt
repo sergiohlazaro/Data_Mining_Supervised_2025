@@ -1,0 +1,14 @@
+¿Qué representa?
+
+- Este es un histograma de la variable Freq, es decir, cuántas veces un país tuvo un cierto número de incidentes en un año.
+
+Análisis del gráfico:
+
+- La gran mayoría de los valores están cerca de 0.
+- Hay pocos casos con valores extremadamente altos (outliers).
+L- os incidentes están muy desigualmente distribuidos, con algunos países y años teniendo muchos más incidentes que otros.
+
+¿Qué podemos inferir?
+
+- Distribución altamente sesgada: La mayoría de países tienen muy pocos incidentes, mientras que unos pocos países tienen muchísimos.
+- Los valores extremos pueden afectar a los modelos, por lo que aplicamos una transformación logarítmica

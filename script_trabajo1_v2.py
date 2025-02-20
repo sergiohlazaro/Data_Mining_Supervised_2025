@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.preprocessing import MinMaxScaler
-# Prueba del gitbranch
+
 # Cargar el dataset
 df = pd.read_csv("incidents.byCountryYr.csv")
 
@@ -91,4 +91,4 @@ print("Gráfico guardado como 'evolucion_incidentes.png'; Ábrelo manualmente.")
 print("-----------------------------------------------------------------------------------------------------------------------------------")
 
 # Fin del script
-print("¡Análisis de datos completado! 🚀")
+print("\n¡Análisis de datos completado!\n")

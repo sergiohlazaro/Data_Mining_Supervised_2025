@@ -1,0 +1,15 @@
+¿Qué representa?
+
+- Este gráfico muestra cómo han cambiado los incidentes a lo largo del tiempo. Cada punto representa el total de incidentes en un año, lo que nos permite ver tendencias y cambios históricos.
+
+Análisis del gráfico:
+
+- Años 1970 - 2000: Fluctuaciones moderadas, pero en general número de incidentes bajo.
+- Años 2000 - 2010: Empieza a aumentar progresivamente.
+- Pico en 2013 - 2015: Aumento explosivo de incidentes, alcanzando un máximo en 2014-2015.
+- Descenso desde 2015: Después del pico, hay una tendencia a la baja, pero sigue siendo más alta que antes del 2000.
+
+¿Qué podemos inferir?
+
+- Factores globales podrían estar influyendo (conflictos, terrorismo, crisis políticas).
+- Este patrón es útil para modelos de predicción, ya que podemos ver picos de actividad y cambios de tendencia.
