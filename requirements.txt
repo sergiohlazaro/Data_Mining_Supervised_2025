@@ -1,3 +1,5 @@
 pandas
 seaborn
 scikit-learn
+imblearn
+SMOTE
