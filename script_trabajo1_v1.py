@@ -41,11 +41,3 @@ plt.xlabel("Número de Incidentes")
 plt.ylabel("Frecuencia")
 plt.title("Distribución de la Frecuencia de Incidentes por País y Año")
 plt.grid(axis="y")
-
-plt.savefig("histograma_freq.png")                                          # Guarda la imagen
-print("Gráfico guardado como 'histograma_freq.png'; Ábrelo manualmente.")
-print("\n")
-print("-----------------------------------------------------------------------------------------------------------------------------------")
-
-
-

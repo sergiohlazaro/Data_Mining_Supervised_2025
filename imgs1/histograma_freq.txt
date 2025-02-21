@@ -6,7 +6,7 @@ Análisis del gráfico:
 
 - La gran mayoría de los valores están cerca de 0.
 - Hay pocos casos con valores extremadamente altos (outliers).
-L- os incidentes están muy desigualmente distribuidos, con algunos países y años teniendo muchos más incidentes que otros.
+- Los incidentes están muy desigualmente distribuidos, con algunos países y años teniendo muchos más incidentes que otros.
 
 ¿Qué podemos inferir?
 
