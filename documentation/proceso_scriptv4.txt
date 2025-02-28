@@ -1,0 +1,84 @@
+[ESTE ES UN BREVE RESUMEN DEL PROCESO LLEVADO A CABO HASTA EL script_trabajo1_v4.py]
+
+🔹 1. Carga y exploración del dataset
+
+    - Dataset: incidents.byCountryYr.csv (10200 registros, 4 columnas).
+    - Variables principales:
+    
+        country_txt: País del incidente.
+        iyear: Año del incidente.
+        Freq: Número de incidentes en ese país y año.
+
+    - Acciones realizadas:
+
+        Cargamos los datos y verificamos si tenían valores nulos o duplicados.
+        Identificamos que Freq estaba altamente desbalanceado (muchos valores 0).
+
+    -> 📊 Diagrama de distribución de Freq:
+            (📌 Histograma original, mostrando el sesgo hacia 0)
+
+🔹 2. Transformación y preprocesamiento de los datos
+
+    - Transformaciones aplicadas a Freq:
+
+        Transformación logarítmica (log(Freq + 1)) para reducir el impacto de valores extremos.
+        Categorización (Bajo, Medio, Alto, Cero) usando pd.cut().
+        Normalización de Freq entre [0,1].
+
+    -> 📊 Diagrama de Freq después de la transformación logarítmica:
+            (📌 Histograma corregido con valores más balanceados)
+
+🔹 3. División del dataset y preparación para modelos
+
+    - Selección de variables:
+
+        Predictoras: iyear, country_txt (convertido a numérico con LabelEncoder).
+        Variable objetivo: Freq_category (Bajo, Medio, Alto, Cero).
+        División en conjuntos de entrenamiento (80%) y prueba (20%).
+
+    -> 📊 Tamaño de los conjuntos de datos:
+
+            Entrenamiento: 8160 registros.
+            Prueba: 2040 registros.
+
+🔹 4. Balanceo de clases con SMOTE
+
+    - Problema detectado: Freq_category estaba desbalanceado (mucha clase "Cero").
+    - Solución aplicada: SMOTE para generar muestras sintéticas de las clases menos representadas.
+
+    -> 📊 Tamaño después de SMOTE:
+
+            Entrenamiento balanceado: 19,708 registros.
+
+🔹 5. Entrenamiento de modelos de clasificación
+
+    - Probamos 4 modelos de clasificación supervisada:
+
+        Naive Bayes
+        Árbol de Decisión
+        k-NN (k=3)
+        Regresión Logística (max_iter=1000 para evitar problemas de convergencia)
+
+🔹 6. Evaluación de los modelos
+
+    - Para cada modelo, calculamos:
+
+        Accuracy (precisión global).
+        Matriz de Confusión (errores en cada clase).
+        Precision, Recall y F1-score.
+
+        Modelo	                        Accuracy
+
+        Naive Bayes	                    36.17%
+        Árbol de Decisión               ✅62.74%
+        k-NN (k=3)	                    57.40%
+        Regresión Logística	            37.99%
+
+        📌 Conclusión:
+
+        - Naive Bayes y Regresión Logística fallaron (baja precisión en clases "Alto" y "Medio").
+        - Árbol de Decisión fue el mejor modelo.
+        - k-NN funcionó mejor que Naive Bayes, pero sigue por debajo del Árbol de Decisión.
+
+        -> 📊 Matriz de Confusión del Árbol de Decisión:
+                (📌 Gráfico donde se observa que mejora en todas las clases).
