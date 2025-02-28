@@ -85,8 +85,8 @@
 
 🚀 Próximo paso: Implementar los modelos faltantes:
 
-    IB1 (k-NN con k=1)
+    IB1 (k-NN con k=1, sin Weka)
     TAN (Tree Augmented Naive Bayes en Weka)
     JRip (Reglas RIPPER en Weka)
-    ID3 (Árbol de Decisión basado en entropía)
-    J48 (Versión mejorada de ID3, C4.5 en Weka)
+    ID3 (Árbol de Decisión basado en entropía, sin Weka)
+    J48 (Versión mejorada de ID3, C4.5 sin Weka)
