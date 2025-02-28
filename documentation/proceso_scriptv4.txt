@@ -82,3 +82,11 @@
 
         -> 📊 Matriz de Confusión del Árbol de Decisión:
                 (📌 Gráfico donde se observa que mejora en todas las clases).
+
+🚀 Próximo paso: Implementar los modelos faltantes:
+
+    IB1 (k-NN con k=1)
+    TAN (Tree Augmented Naive Bayes en Weka)
+    JRip (Reglas RIPPER en Weka)
+    ID3 (Árbol de Decisión basado en entropía)
+    J48 (Versión mejorada de ID3, C4.5 en Weka)
