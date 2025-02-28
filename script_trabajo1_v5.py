@@ -11,6 +11,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 from imblearn.over_sampling import SMOTE
 from sklearn.model_selection import GridSearchCV
+from sklearn.ensemble import RandomForestClassifier
 
 # 1. Cargar el dataset
 df = pd.read_csv("incidents.byCountryYr.csv")
@@ -121,6 +122,43 @@ print(f"Mejor configuración para k-NN: {grid_knn.best_params_}")
 evaluar_modelo("k-NN Optimizado", y_test, knn_preds_opt)
 
 print("\nOptimización completada. Evaluación de modelos optimizados realizada.")
+print("-----------------------------------------------------------------------------------------------------------------------------------")
+print("¡Entrenamiento y evaluación de modelos completados! 🚀")
+print("-----------------------------------------------------------------------------------------------------------------------------------")
+
+# 🔹 1. Entrenar Random Forest
+print("\nEntrenando Random Forest...")
+rf_model = RandomForestClassifier(n_estimators=100, max_depth=15, random_state=42)
+rf_model.fit(X_train_bal, y_train_bal)
+rf_preds = rf_model.predict(X_test)
+
+evaluar_modelo("Random Forest", y_test, rf_preds)
+
+# 🔹 2. Optimización de k-NN con k=5
+print("\nProbando k-NN con k=5...")
+knn_5_model = KNeighborsClassifier(n_neighbors=5)
+knn_5_model.fit(X_train_bal, y_train_bal)
+knn_5_preds = knn_5_model.predict(X_test)
+
+evaluar_modelo("k-NN (k=5)", y_test, knn_5_preds)
+
+# 🔹 3. Optimización de k-NN con k=7
+print("\nProbando k-NN con k=7...")
+knn_7_model = KNeighborsClassifier(n_neighbors=7)
+knn_7_model.fit(X_train_bal, y_train_bal)
+knn_7_preds = knn_7_model.predict(X_test)
+
+evaluar_modelo("k-NN (k=7)", y_test, knn_7_preds)
+
+# 🔹 4. Entrenar Random Forest con max_depth=None
+print("\nEntrenando Random Forest con max_depth=None...")
+rf_model = RandomForestClassifier(n_estimators=100, max_depth=None, random_state=42)
+rf_model.fit(X_train_bal, y_train_bal)
+rf_preds = rf_model.predict(X_test)
+
+evaluar_modelo("Random Forest con max_depth=None", y_test, rf_preds)
+
+print("\nEvaluación completada. Modelos adicionales entrenados y evaluados.")
 print("-----------------------------------------------------------------------------------------------------------------------------------")
 print("¡Entrenamiento y evaluación de modelos completados! 🚀")
 print("-----------------------------------------------------------------------------------------------------------------------------------")
