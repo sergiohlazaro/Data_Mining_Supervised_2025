@@ -1,0 +1,89 @@
+
+Hemos probado 6 modelos de clasificación supervisada y ahora analizaremos sus resultados en términos teóricos y prácticos. 
+Nos enfocaremos en accuracy, precision, recall, f1-score y la matriz de confusión para cada modelo.
+
+📌 1. Naive Bayes
+    📈 Accuracy: 36.17% (el peor modelo).
+
+    🔍 Interpretación teórica:
+
+    - Naive Bayes asume independencia entre las variables predictoras, lo cual no se cumple en este dataset.
+    - Tiende a favorecer la clase mayoritaria ("Cero"), lo que provoca baja precisión en las demás clases.
+    - La clase "Alto" solo tiene un 5% de precisión, lo que indica que no se está clasificando bien.
+
+    📊 Conclusión:
+    ❌ Modelo descartado. No es adecuado para este problema debido a la fuerte dependencia entre iyear y country_txt.
+
+📌 2. Árbol de Decisión (ID3)
+    📈 Accuracy: 62.30% (mejor que Naive Bayes y J48).
+
+    🔍 Interpretación teórica:
+
+    - ID3 usa la entropía para dividir los datos, lo que le permite manejar datos categóricos y continuos.
+    - Mejor precisión y recall en todas las clases en comparación con Naive Bayes.
+    - Clase "Alto" mejora a un 37% de precisión y 84% de recall, lo que indica que puede identificar estos casos.
+
+    📊 Conclusión:
+    ✅ Modelo prometedor. Puede mejorarse con poda de ramas o con un modelo más avanzado como Random Forest.
+
+📌 3. J48 (ID3 con poda)
+    📈 Accuracy: 45.49% (peor que ID3).
+
+    🔍 Interpretación teórica:
+
+    - J48 es ID3 mejorado con poda, lo que evita el sobreajuste.
+    - Sin embargo, la poda ha reducido demasiado la capacidad predictiva del modelo.
+    - Baja precisión en la clase "Alto" y "Medio", lo que indica que el modelo se ha vuelto demasiado simple.
+
+    📊 Conclusión:
+    ❌ Modelo descartado en su forma actual. Podríamos probar una versión con un ajuste de profundidad menor (max_depth=15 en vez de max_depth=10).
+
+📌 4. IB1 (k-NN con k=1)
+    📈 Accuracy: 56.67% (mejor que Naive Bayes y J48, pero peor que ID3).
+
+    🔍 Interpretación teórica:
+
+    - IB1 es un clasificador basado en instancias que usa solo el vecino más cercano.
+    - Alto recall en la clase "Alto" (80%), pero baja precisión (33%), lo que indica que clasifica muchos casos como "Alto" incorrectamente.
+    - Mejor que J48 y Naive Bayes, pero menos estable que ID3.
+
+    📊 Conclusión:
+    ✅ Podría mejorar con una mayor cantidad de vecinos (k=3 o k=5).
+
+📌 5. k-NN (k=3)
+    📈 Accuracy: 57.40% (mejor que IB1, pero peor que ID3).
+
+    🔍 Interpretación teórica:
+
+    - Usa los 3 vecinos más cercanos para decidir la clase, lo que reduce el impacto de valores atípicos.
+    - Mayor precisión en "Alto" que IB1 (28% vs. 33%), pero menor recall (80% vs. 54%).
+    - Modelo más estable que IB1, pero aún no supera a ID3.
+
+    📊 Conclusión:
+    ✅ Mejor que IB1, pero podríamos probar k=5 para ver si mejora aún más.
+
+📌 6. Regresión Logística
+    📈 Accuracy: 37.99% (similar a Naive Bayes).
+
+    🔍 Interpretación teórica:
+
+    - Funciona bien cuando hay una relación lineal entre las variables y la salida, lo que no parece cumplirse aquí.
+    - Baja precisión en todas las clases excepto "Cero" (67% de precisión, pero 50% de recall).
+    - Parece favorecer la clase mayoritaria, lo que hace que clases como "Alto" y "Medio" tengan precisión de 5% y 7% respectivamente.
+
+    📊 Conclusión:
+    ❌ Modelo descartado. No es adecuado para este problema.
+
+[VAMOS A PROCEDER A AJUSTAR LOS HIPERPARÁMETROS DE LOS MODELOS MÁS PROMETEDORES]
+
+📌 Conclusión General de la Optimización
+
+    ✅ ID3 ya estaba en su mejor configuración, por lo que la optimización no tuvo efecto.
+    ❌ k-NN con weights="distance" no mejoró, e incluso empeoró levemente.
+
+📌 ¿Qué hacemos ahora?
+
+    - Descartar más ajustes en ID3 y probar Random Forest.
+    - En k-NN, probar k=5 y k=7 para ver si mejora.
+    - Pasar a la selección de variables para ver si reduce el ruido y mejora los modelos.
+
