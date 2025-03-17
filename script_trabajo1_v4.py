@@ -1,4 +1,3 @@
-# Importar librerías necesarias
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -105,7 +104,7 @@ evaluar_modelo("k-NN", y_test, knn_preds)
 evaluar_modelo("Regresión Logística", y_test, lr_preds)
 
 print("-----------------------------------------------------------------------------------------------------------------------------------")
-print("¡Entrenamiento y evaluación de modelos completados! 🚀")
+print("¡Entrenamiento y evaluación de modelos completados!")
 print("-----------------------------------------------------------------------------------------------------------------------------------")
 print("\nNaive Bayes y Regresión Logística fallaron (baja precisión en clases 'Alto' y 'Medio').")
 print("\nÁrbol de Decisión y k-NN obtuvieron mejores resultados.")
