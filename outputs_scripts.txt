@@ -1,0 +1,1366 @@
+El archivo contiene el siguiente número de filas y columnas:
+(10200, 4)
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+El archivo contiene las siguientes columnas:
+Index(['rownames', 'country_txt', 'iyear', 'Freq'], dtype='object')
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+El archivo contiene los siguientes tipos de datos:
+rownames        int64
+country_txt    object
+iyear           int64
+Freq            int64
+dtype: object
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+Valores nulos por columna:
+ rownames       0
+country_txt    0
+iyear          0
+Freq           0
+dtype: int64
+
+Número de filas duplicadas: 0
+
+
+Estadísticas descriptivas:
+           rownames         iyear          Freq
+count  10200.000000  10200.000000  10200.000000
+mean    5100.500000   1995.040000     20.559412
+std     2944.630707     14.864053    121.373120
+min        1.000000   1970.000000      0.000000
+25%     2550.750000   1982.000000      0.000000
+50%     5100.500000   1995.500000      0.000000
+75%     7650.250000   2008.000000      3.000000
+max    10200.000000   2020.000000   3934.000000
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+1. Para empezar cargamos los datos y los prepararemos para el modelado:
+ - Hay que cargar el dataset y explorarlo, al explorarlo revisaremos valores nulos y duplicados y corregiremos estos si los hay.
+ - Por último, realizaremos un análisis exploratorio de datos (EDA) para entender mejor los datos generando una serie de gráficos.
+
+
+El archivo contiene el siguiente número de filas y columnas:
+(10200, 4)
+-----------------------------------------------------------------------------------------------------------------------------------
+
+El archivo contiene las siguientes columnas:
+Index(['rownames', 'country_txt', 'iyear', 'Freq'], dtype='object')
+-----------------------------------------------------------------------------------------------------------------------------------
+
+El archivo contiene los siguientes tipos de datos:
+rownames        int64
+country_txt    object
+iyear           int64
+Freq            int64
+dtype: object
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Valores nulos por columna:
+ rownames       0
+country_txt    0
+iyear          0
+Freq           0
+dtype: int64
+
+Número de filas duplicadas: 0
+
+Estadísticas descriptivas:
+           rownames         iyear          Freq
+count  10200.000000  10200.000000  10200.000000
+mean    5100.500000   1995.040000     20.559412
+std     2944.630707     14.864053    121.373120
+min        1.000000   1970.000000      0.000000
+25%     2550.750000   1982.000000      0.000000
+50%     5100.500000   1995.500000      0.000000
+75%     7650.250000   2008.000000      3.000000
+max    10200.000000   2020.000000   3934.000000
+-----------------------------------------------------------------------------------------------------------------------------------
+Gráfico guardado como 'histograma_freq.png'; Ábrelo manualmente.
+-----------------------------------------------------------------------------------------------------------------------------------
+Gráfico guardado como 'histograma_freq_log.png'; Ábrelo manualmente.
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Distribución de la variable categorizada 'Freq_category':
+Freq_category
+Cero     6131
+Bajo     2550
+Medio    1075
+Alto      444
+Name: count, dtype: int64
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Estadísticas de la variable normalizada 'Freq_scaled':
+               Freq   Freq_scaled
+count  10200.000000  10200.000000
+mean      20.559412      0.005226
+std      121.373120      0.030852
+min        0.000000      0.000000
+25%        0.000000      0.000000
+50%        0.000000      0.000000
+75%        3.000000      0.000763
+max     3934.000000      1.000000
+-----------------------------------------------------------------------------------------------------------------------------------
+Gráfico guardado como 'evolucion_incidentes.png'; Ábrelo manualmente.
+-----------------------------------------------------------------------------------------------------------------------------------
+
+¡Análisis de datos completado!
+
+2. Ahora que hemos entendido los datos, podemos pasar a la fase de clasificación supervisada:
+ - Preparar los datos para el modelado.
+ - Entrenar los modelos de clasificación (Naive Bayes, Árboles de Decisión, k-NN, Regresión Logística).
+ - Evaluar el rendimiento de los modelos.
+ -----------------------------------------------------------------------------------------------------------------------------------
+ 1. Para empezar cargamos los datos y los prepararemos para el modelado:
+ - Hay que cargar el dataset y explorarlo, al explorarlo revisaremos valores nulos y duplicados y corregiremos estos si los hay.
+ - Por último, realizaremos un análisis exploratorio de datos (EDA) para entender mejor los datos generando una serie de gráficos.
+
+
+El archivo contiene el siguiente número de filas y columnas:
+(10200, 4)
+-----------------------------------------------------------------------------------------------------------------------------------
+
+El archivo contiene las siguientes columnas:
+Index(['rownames', 'country_txt', 'iyear', 'Freq'], dtype='object')
+-----------------------------------------------------------------------------------------------------------------------------------
+
+El archivo contiene los siguientes tipos de datos:
+rownames        int64
+country_txt    object
+iyear           int64
+Freq            int64
+dtype: object
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Valores nulos por columna:
+ rownames       0
+country_txt    0
+iyear          0
+Freq           0
+dtype: int64
+
+Número de filas duplicadas: 0
+
+Estadísticas descriptivas:
+           rownames         iyear          Freq
+count  10200.000000  10200.000000  10200.000000
+mean    5100.500000   1995.040000     20.559412
+std     2944.630707     14.864053    121.373120
+min        1.000000   1970.000000      0.000000
+25%     2550.750000   1982.000000      0.000000
+50%     5100.500000   1995.500000      0.000000
+75%     7650.250000   2008.000000      3.000000
+max    10200.000000   2020.000000   3934.000000
+-----------------------------------------------------------------------------------------------------------------------------------
+Gráfico guardado como 'histograma_freq.png'; Ábrelo manualmente.
+-----------------------------------------------------------------------------------------------------------------------------------
+Gráfico guardado como 'histograma_freq_log.png'; Ábrelo manualmente.
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Distribución de la variable categorizada 'Freq_category':
+Freq_category
+Cero     6131
+Bajo     2550
+Medio    1075
+Alto      444
+Name: count, dtype: int64
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Estadísticas de la variable normalizada 'Freq_scaled':
+               Freq   Freq_scaled
+count  10200.000000  10200.000000
+mean      20.559412      0.005226
+std      121.373120      0.030852
+min        0.000000      0.000000
+25%        0.000000      0.000000
+50%        0.000000      0.000000
+75%        3.000000      0.000763
+max     3934.000000      1.000000
+-----------------------------------------------------------------------------------------------------------------------------------
+Gráfico guardado como 'evolucion_incidentes.png'; Ábrelo manualmente.
+-----------------------------------------------------------------------------------------------------------------------------------
+
+¡Análisis de datos completado!
+
+2. Ahora que hemos entendido los datos, podemos pasar a la fase de clasificación supervisada:
+ - Preparar los datos para el modelado.
+ - Entrenar los modelos de clasificación (Naive Bayes, Árboles de Decisión, k-NN, Regresión Logística).
+ - Evaluar el rendimiento de los modelos.
+
+
+3. Preparación de los datos para el modelado:
+ - Selección de variables predictoras y objetivo.
+ - Transformación de variables categóricas en numéricas.
+ - División del conjunto en entrenamiento y prueba.
+
+Datos preparados:
+ - Tamaño del conjunto de entrenamiento: (8160, 2)
+ - Tamaño del conjunto de prueba: (2040, 2)
+-----------------------------------------------------------------------------------------------------------------------------------
+
+4. Entrenamiento de modelos de clasificación:
+ - Entrenamos Naive Bayes, Árbol de Decisión, k-NN y Regresión Logística.
+ - Evaluamos su rendimiento en el conjunto de prueba.
+ - ERRORES que surgieron y se aplico: Balanceo de clases con SMOTE.
+ - ERRORES que surgieron y se aplico: Aumentamos iteraciones en Regresión Logística.
+ - ERRORES que surgieron y se aplico: Evaluamos modelos con matriz de confusión.
+/home/sergio/Proyectos/Mineria_de_Datos2025/data_mining_2025/.venv/lib/python3.11/site-packages/sklearn/linear_model/_logistic.py:1247: FutureWarning: 'multi_class' was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use 'multinomial'. Leave it to its default value to avoid this warning.
+  warnings.warn(
+/home/sergio/Proyectos/Mineria_de_Datos2025/data_mining_2025/.venv/lib/python3.11/site-packages/sklearn/linear_model/_logistic.py:465: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+
+Resultados de los modelos:
+🔹 Naive Bayes Accuracy: 0.5902
+🔹 Árbol de Decisión Accuracy: 0.7284
+🔹 k-NN Accuracy: 0.6245
+🔹 Regresión Logística Accuracy: 0.5902
+
+Clasificación detallada para Naive Bayes:
+/home/sergio/Proyectos/Mineria_de_Datos2025/data_mining_2025/.venv/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/home/sergio/Proyectos/Mineria_de_Datos2025/data_mining_2025/.venv/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/home/sergio/Proyectos/Mineria_de_Datos2025/data_mining_2025/.venv/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+              precision    recall  f1-score   support
+
+        Alto       0.00      0.00      0.00        85
+        Bajo       0.00      0.00      0.00       540
+        Cero       0.59      1.00      0.74      1204
+       Medio       0.00      0.00      0.00       211
+
+    accuracy                           0.59      2040
+   macro avg       0.15      0.25      0.19      2040
+weighted avg       0.35      0.59      0.44      2040
+
+
+Clasificación detallada para Árbol de Decisión:
+              precision    recall  f1-score   support
+
+        Alto       0.72      0.80      0.76        85
+        Bajo       0.54      0.53      0.53       540
+        Cero       0.83      0.83      0.83      1204
+       Medio       0.63      0.66      0.64       211
+
+    accuracy                           0.73      2040
+   macro avg       0.68      0.70      0.69      2040
+weighted avg       0.73      0.73      0.73      2040
+
+
+Clasificación detallada para k-NN:
+              precision    recall  f1-score   support
+
+        Alto       0.42      0.36      0.39        85
+        Bajo       0.44      0.37      0.40       540
+        Cero       0.70      0.84      0.76      1204
+       Medio       0.49      0.17      0.25       211
+
+    accuracy                           0.62      2040
+   macro avg       0.51      0.43      0.45      2040
+weighted avg       0.60      0.62      0.60      2040
+
+
+Clasificación detallada para Regresión Logística:
+/home/sergio/Proyectos/Mineria_de_Datos2025/data_mining_2025/.venv/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/home/sergio/Proyectos/Mineria_de_Datos2025/data_mining_2025/.venv/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+/home/sergio/Proyectos/Mineria_de_Datos2025/data_mining_2025/.venv/lib/python3.11/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+              precision    recall  f1-score   support
+
+        Alto       0.00      0.00      0.00        85
+        Bajo       0.00      0.00      0.00       540
+        Cero       0.59      1.00      0.74      1204
+       Medio       0.00      0.00      0.00       211
+
+    accuracy                           0.59      2040
+   macro avg       0.15      0.25      0.19      2040
+weighted avg       0.35      0.59      0.44      2040
+
+-----------------------------------------------------------------------------------------------------------------------------------
+Surgen varios problemas con este script:
+1. Regresión logística no converge [lbfgs failed to converge (status=1): STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT]: solución, aumentar max_iter a 1000 o más para permitir más interacciones
+2. Naive Bayes y Regresión Logística solo predicen la clase mayoritaria (Cero),lo que indica que los modelos no están aprendiendo correctamente, la distribución de clases es desbalanceada, con demasiados datos en la clase Cero: solución, balancear las clases con SMOTE (aplicar balanceo de clases (undersampling, oversampling o técnicas como SMOTE))
+3. Advertencias de precisión indefinida (UndefinedMetricWarning) ocurre porque ciertas clases nunca son predichas, en la clasificación detallada; solución, establecer zero_division=0 en classification_report para evitar advertencias.
+-----------------------------------------------------------------------------------------------------------------------------------
+Cargando el dataset...
+El dataset tiene 10200 filas y 4 columnas.
+
+Aplicando transformaciones a los datos...
+Se ha aplicado la transformación logarítmica a 'Freq'.
+Se ha categorizado la variable 'Freq' en 'Cero', 'Bajo', 'Medio' y 'Alto'.
+
+Preparando los datos para el modelado...
+Se han seleccionado las variables predictoras: ['iyear', 'country_txt'].
+Se ha codificado 'country_txt' a valores numéricos.
+División de datos completada: 8160 muestras para entrenamiento, 2040 para prueba.
+
+Aplicando SMOTE para balancear las clases...
+Datos balanceados con SMOTE. Ahora hay 19708 muestras en el conjunto de entrenamiento.
+
+Entrenamiento de modelos:
+
+Entrenando Naive Bayes...
+Naive Bayes entrenado y evaluado.
+
+Entrenando Árbol de Decisión (ID3)...
+Árbol de Decisión (ID3) entrenado y evaluado.
+
+Entrenando k-NN con k=3...
+k-NN (k=3) entrenado y evaluado.
+
+Entrenando Regresión Logística con solver optimizado...
+Regresión Logística entrenada y evaluada.
+
+Evaluando los modelos entrenados:
+
+Evaluación de Naive Bayes:
+Accuracy: 0.3618
+Matriz de Confusión:
+ [[ 38  21  22   4]
+ [183 167 146  44]
+ [394 229 512  69]
+ [ 82  59  49  21]]
+Métricas detalladas:
+               precision    recall  f1-score   support
+
+        Alto       0.05      0.45      0.10        85
+        Bajo       0.35      0.31      0.33       540
+        Cero       0.70      0.43      0.53      1204
+       Medio       0.15      0.10      0.12       211
+
+    accuracy                           0.36      2040
+   macro avg       0.31      0.32      0.27      2040
+weighted avg       0.53      0.36      0.42      2040
+
+
+Evaluación de Árbol de Decisión (ID3):
+Accuracy: 0.6230
+Matriz de Confusión:
+ [[ 71   3   0  11]
+ [ 28 283 152  77]
+ [ 58 282 795  69]
+ [ 37  39  13 122]]
+Métricas detalladas:
+               precision    recall  f1-score   support
+
+        Alto       0.37      0.84      0.51        85
+        Bajo       0.47      0.52      0.49       540
+        Cero       0.83      0.66      0.73      1204
+       Medio       0.44      0.58      0.50       211
+
+    accuracy                           0.62      2040
+   macro avg       0.52      0.65      0.56      2040
+weighted avg       0.67      0.62      0.64      2040
+
+
+Evaluación de k-NN (k=3):
+Accuracy: 0.5740
+Matriz de Confusión:
+ [[ 68   6   1  10]
+ [ 44 276 146  74]
+ [ 85 299 713 107]
+ [ 43  38  16 114]]
+Métricas detalladas:
+               precision    recall  f1-score   support
+
+        Alto       0.28      0.80      0.42        85
+        Bajo       0.45      0.51      0.48       540
+        Cero       0.81      0.59      0.69      1204
+       Medio       0.37      0.54      0.44       211
+
+    accuracy                           0.57      2040
+   macro avg       0.48      0.61      0.51      2040
+weighted avg       0.65      0.57      0.59      2040
+
+
+Evaluación de Regresión Logística:
+Accuracy: 0.1853
+Matriz de Confusión:
+ [[ 39  46   0   0]
+ [206 319   4  11]
+ [563 580  20  41]
+ [ 98 113   0   0]]
+Métricas detalladas:
+               precision    recall  f1-score   support
+
+        Alto       0.04      0.46      0.08        85
+        Bajo       0.30      0.59      0.40       540
+        Cero       0.83      0.02      0.03      1204
+       Medio       0.00      0.00      0.00       211
+
+    accuracy                           0.19      2040
+   macro avg       0.29      0.27      0.13      2040
+weighted avg       0.57      0.19      0.13      2040
+
+
+Evaluación completada. Todos los errores anteriores han sido corregidos.
+-----------------------------------------------------------------------------------------------------------------------------------
+¡Entrenamiento y evaluación de modelos completados!
+-----------------------------------------------------------------------------------------------------------------------------------
+El archivo contiene el siguiente número de filas y columnas:
+(10200, 4)
+-----------------------------------------------------------------------------------------------------------------------------------
+
+El archivo contiene las siguientes columnas:
+Index(['rownames', 'country_txt', 'iyear', 'Freq'], dtype='object')
+-----------------------------------------------------------------------------------------------------------------------------------
+
+El archivo contiene los siguientes tipos de datos:
+rownames        int64
+country_txt    object
+iyear           int64
+Freq            int64
+dtype: object
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Valores nulos por columna:
+ rownames       0
+country_txt    0
+iyear          0
+Freq           0
+dtype: int64
+
+Número de filas duplicadas: 0
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Distribución de la variable categorizada 'Freq_category':
+Freq_category
+Cero     6131
+Bajo     2550
+Medio    1075
+Alto      444
+Name: count, dtype: int64
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Preparación de los datos para el modelado:
+ - Selección de variables predictoras y objetivo.
+ - Transformación de variables categóricas en numéricas.
+ - División del conjunto en entrenamiento y prueba.
+
+Datos preparados:
+ - Tamaño del conjunto de entrenamiento: (8160, 2)
+ - Tamaño del conjunto de prueba: (2040, 2)
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Datos balanceados con SMOTE:
+ - Tamaño del conjunto de entrenamiento balanceado: (19708, 2)
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Entrenamiento de modelos:
+
+🔹 Naive Bayes:
+Accuracy: 0.36176470588235293
+Matriz de Confusión:
+[[ 38  21  22   4]
+ [183 167 146  44]
+ [394 229 512  69]
+ [ 82  59  49  21]]
+              precision    recall  f1-score   support
+
+        Alto       0.05      0.45      0.10        85
+        Bajo       0.35      0.31      0.33       540
+        Cero       0.70      0.43      0.53      1204
+       Medio       0.15      0.10      0.12       211
+
+    accuracy                           0.36      2040
+   macro avg       0.31      0.32      0.27      2040
+weighted avg       0.53      0.36      0.42      2040
+
+
+🔹 Árbol de Decisión:
+Accuracy: 0.6274509803921569
+Matriz de Confusión:
+[[ 71   3   0  11]
+ [ 30 284 144  82]
+ [ 60 281 799  64]
+ [ 38  34  13 126]]
+              precision    recall  f1-score   support
+
+        Alto       0.36      0.84      0.50        85
+        Bajo       0.47      0.53      0.50       540
+        Cero       0.84      0.66      0.74      1204
+       Medio       0.45      0.60      0.51       211
+
+    accuracy                           0.63      2040
+   macro avg       0.53      0.66      0.56      2040
+weighted avg       0.68      0.63      0.64      2040
+
+
+🔹 k-NN:
+Accuracy: 0.5740196078431372
+Matriz de Confusión:
+[[ 68   6   1  10]
+ [ 44 276 146  74]
+ [ 85 299 713 107]
+ [ 43  38  16 114]]
+              precision    recall  f1-score   support
+
+        Alto       0.28      0.80      0.42        85
+        Bajo       0.45      0.51      0.48       540
+        Cero       0.81      0.59      0.69      1204
+       Medio       0.37      0.54      0.44       211
+
+    accuracy                           0.57      2040
+   macro avg       0.48      0.61      0.51      2040
+weighted avg       0.65      0.57      0.59      2040
+
+
+🔹 Regresión Logística:
+Accuracy: 0.3799019607843137
+Matriz de Confusión:
+[[ 37  15  31   2]
+ [193 129 193  25]
+ [408 157 604  35]
+ [ 90  38  78   5]]
+              precision    recall  f1-score   support
+
+        Alto       0.05      0.44      0.09        85
+        Bajo       0.38      0.24      0.29       540
+        Cero       0.67      0.50      0.57      1204
+       Medio       0.07      0.02      0.04       211
+
+    accuracy                           0.38      2040
+   macro avg       0.29      0.30      0.25      2040
+weighted avg       0.50      0.38      0.42      2040
+
+-----------------------------------------------------------------------------------------------------------------------------------
+¡Entrenamiento y evaluación de modelos completados!
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Naive Bayes y Regresión Logística fallaron (baja precisión en clases 'Alto' y 'Medio').
+
+Árbol de Decisión y k-NN obtuvieron mejores resultados.
+
+Árbol de Decisión fue el mejor modelo, k-NN funciona mejor que Naive Bayes.
+
+-----------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------
+Entrenamiento de modelos:
+
+🔹 Naive Bayes:
+Accuracy: 0.36176470588235293
+Matriz de Confusión:
+ [[ 38  21  22   4]
+ [183 167 146  44]
+ [394 229 512  69]
+ [ 82  59  49  21]]
+              precision    recall  f1-score   support
+
+        Alto       0.05      0.45      0.10        85
+        Bajo       0.35      0.31      0.33       540
+        Cero       0.70      0.43      0.53      1204
+       Medio       0.15      0.10      0.12       211
+
+    accuracy                           0.36      2040
+   macro avg       0.31      0.32      0.27      2040
+weighted avg       0.53      0.36      0.42      2040
+
+
+🔹 Árbol de Decisión (ID3):
+Accuracy: 0.6230392156862745
+Matriz de Confusión:
+ [[ 71   3   0  11]
+ [ 28 283 152  77]
+ [ 58 282 795  69]
+ [ 37  39  13 122]]
+              precision    recall  f1-score   support
+
+        Alto       0.37      0.84      0.51        85
+        Bajo       0.47      0.52      0.49       540
+        Cero       0.83      0.66      0.73      1204
+       Medio       0.44      0.58      0.50       211
+
+    accuracy                           0.62      2040
+   macro avg       0.52      0.65      0.56      2040
+weighted avg       0.67      0.62      0.64      2040
+
+
+🔹 J48 (ID3 con poda):
+Accuracy: 0.4549019607843137
+Matriz de Confusión:
+ [[ 60   6   0  19]
+ [ 56 243  97 144]
+ [131 349 517 207]
+ [ 37  53  13 108]]
+              precision    recall  f1-score   support
+
+        Alto       0.21      0.71      0.33        85
+        Bajo       0.37      0.45      0.41       540
+        Cero       0.82      0.43      0.56      1204
+       Medio       0.23      0.51      0.31       211
+
+    accuracy                           0.45      2040
+   macro avg       0.41      0.52      0.40      2040
+weighted avg       0.62      0.45      0.49      2040
+
+
+🔹 IB1 (k-NN con k=1):
+Accuracy: 0.5666666666666667
+Matriz de Confusión:
+ [[ 68   4   3  10]
+ [ 37 248 170  85]
+ [ 69 292 726 117]
+ [ 29  43  25 114]]
+              precision    recall  f1-score   support
+
+        Alto       0.33      0.80      0.47        85
+        Bajo       0.42      0.46      0.44       540
+        Cero       0.79      0.60      0.68      1204
+       Medio       0.35      0.54      0.42       211
+
+    accuracy                           0.57      2040
+   macro avg       0.47      0.60      0.50      2040
+weighted avg       0.63      0.57      0.58      2040
+
+
+🔹 k-NN (k=3):
+Accuracy: 0.5740196078431372
+Matriz de Confusión:
+ [[ 68   6   1  10]
+ [ 44 276 146  74]
+ [ 85 299 713 107]
+ [ 43  38  16 114]]
+              precision    recall  f1-score   support
+
+        Alto       0.28      0.80      0.42        85
+        Bajo       0.45      0.51      0.48       540
+        Cero       0.81      0.59      0.69      1204
+       Medio       0.37      0.54      0.44       211
+
+    accuracy                           0.57      2040
+   macro avg       0.48      0.61      0.51      2040
+weighted avg       0.65      0.57      0.59      2040
+
+
+🔹 Regresión Logística:
+Accuracy: 0.3799019607843137
+Matriz de Confusión:
+ [[ 37  15  31   2]
+ [193 129 193  25]
+ [408 157 604  35]
+ [ 90  38  78   5]]
+              precision    recall  f1-score   support
+
+        Alto       0.05      0.44      0.09        85
+        Bajo       0.38      0.24      0.29       540
+        Cero       0.67      0.50      0.57      1204
+       Medio       0.07      0.02      0.04       211
+
+    accuracy                           0.38      2040
+   macro avg       0.29      0.30      0.25      2040
+weighted avg       0.50      0.38      0.42      2040
+
+-----------------------------------------------------------------------------------------------------------------------------------
+¡Entrenamiento y evaluación de modelos completados! 🚀
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Ajustando hiperparámetros para ID3...
+Mejor configuración para ID3: {'max_depth': None, 'min_samples_split': 2}
+
+🔹 Árbol de Decisión (ID3 Optimizado):
+Accuracy: 0.6230392156862745
+Matriz de Confusión:
+ [[ 71   3   0  11]
+ [ 28 283 152  77]
+ [ 58 282 795  69]
+ [ 37  39  13 122]]
+              precision    recall  f1-score   support
+
+        Alto       0.37      0.84      0.51        85
+        Bajo       0.47      0.52      0.49       540
+        Cero       0.83      0.66      0.73      1204
+       Medio       0.44      0.58      0.50       211
+
+    accuracy                           0.62      2040
+   macro avg       0.52      0.65      0.56      2040
+weighted avg       0.67      0.62      0.64      2040
+
+
+Ajustando hiperparámetros para k-NN...
+Mejor configuración para k-NN: {'n_neighbors': 3, 'weights': 'distance'}
+
+🔹 k-NN Optimizado:
+Accuracy: 0.5622549019607843
+Matriz de Confusión:
+ [[ 67   7   1  10]
+ [ 43 273 142  82]
+ [ 82 314 691 117]
+ [ 39  41  15 116]]
+              precision    recall  f1-score   support
+
+        Alto       0.29      0.79      0.42        85
+        Bajo       0.43      0.51      0.46       540
+        Cero       0.81      0.57      0.67      1204
+       Medio       0.36      0.55      0.43       211
+
+    accuracy                           0.56      2040
+   macro avg       0.47      0.60      0.50      2040
+weighted avg       0.64      0.56      0.58      2040
+
+
+Optimización completada. Evaluación de modelos optimizados realizada.
+-----------------------------------------------------------------------------------------------------------------------------------
+¡Entrenamiento y evaluación de modelos completados! 🚀
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Entrenando Random Forest...
+
+🔹 Random Forest:
+Accuracy: 0.5784313725490197
+Matriz de Confusión:
+ [[ 65   7   2  11]
+ [ 27 241 192  80]
+ [ 64 267 759 114]
+ [ 28  38  30 115]]
+              precision    recall  f1-score   support
+
+        Alto       0.35      0.76      0.48        85
+        Bajo       0.44      0.45      0.44       540
+        Cero       0.77      0.63      0.69      1204
+       Medio       0.36      0.55      0.43       211
+
+    accuracy                           0.58      2040
+   macro avg       0.48      0.60      0.51      2040
+weighted avg       0.62      0.58      0.59      2040
+
+
+Probando k-NN con k=5...
+
+🔹 k-NN (k=5):
+Accuracy: 0.5607843137254902
+Matriz de Confusión:
+ [[ 69   6   1   9]
+ [ 49 274 141  76]
+ [ 80 332 686 106]
+ [ 39  39  18 115]]
+              precision    recall  f1-score   support
+
+        Alto       0.29      0.81      0.43        85
+        Bajo       0.42      0.51      0.46       540
+        Cero       0.81      0.57      0.67      1204
+       Medio       0.38      0.55      0.44       211
+
+    accuracy                           0.56      2040
+   macro avg       0.47      0.61      0.50      2040
+weighted avg       0.64      0.56      0.58      2040
+
+
+Probando k-NN con k=7...
+
+🔹 k-NN (k=7):
+Accuracy: 0.5235294117647059
+Matriz de Confusión:
+ [[ 69   6   1   9]
+ [ 47 259 150  84]
+ [ 94 326 627 157]
+ [ 42  37  19 113]]
+              precision    recall  f1-score   support
+
+        Alto       0.27      0.81      0.41        85
+        Bajo       0.41      0.48      0.44       540
+        Cero       0.79      0.52      0.63      1204
+       Medio       0.31      0.54      0.39       211
+
+    accuracy                           0.52      2040
+   macro avg       0.45      0.59      0.47      2040
+weighted avg       0.62      0.52      0.55      2040
+
+
+Entrenando Random Forest con max_depth=None...
+
+🔹 Random Forest con max_depth=None:
+Accuracy: 0.5387254901960784
+Matriz de Confusión:
+ [[ 63   6   4  12]
+ [ 30 227 200  83]
+ [ 70 306 696 132]
+ [ 29  38  31 113]]
+              precision    recall  f1-score   support
+
+        Alto       0.33      0.74      0.45        85
+        Bajo       0.39      0.42      0.41       540
+        Cero       0.75      0.58      0.65      1204
+       Medio       0.33      0.54      0.41       211
+
+    accuracy                           0.54      2040
+   macro avg       0.45      0.57      0.48      2040
+weighted avg       0.59      0.54      0.55      2040
+
+
+Evaluación completada. Modelos adicionales entrenados y evaluados.
+-----------------------------------------------------------------------------------------------------------------------------------
+¡Entrenamiento y evaluación de modelos completados! 🚀
+-----------------------------------------------------------------------------------------------------------------------------------
+Cargando el dataset...
+El dataset tiene 10200 filas y 4 columnas.
+
+Aplicando transformaciones a los datos...
+Se ha categorizado la variable 'Freq' en 'Cero', 'Bajo', 'Medio' y 'Alto'.
+
+Preparando los datos para el modelado...
+Se ha codificado 'country_txt' a valores numéricos.
+División de datos completada: 8160 muestras para entrenamiento, 2040 para prueba.
+
+Aplicando Métodos de Selección de Variables...
+
+Aplicando Chi-cuadrado y Mutual Information...
+
+Aplicando RFE con Árbol de Decisión...
+
+Evaluando importancia de características con Random Forest...
+
+Los resultados de la selección de variables se han guardado en 'feature_selection_results_var_select.csv'.
+
+El gráfico se ha guardado como 'feature_importance_var_select.png'. Ábrelo manualmente.
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Proceso de selección de variables completado.
+-----------------------------------------------------------------------------------------------------------------------------------
+Entrenamiento de modelos con selección de variables aplicada:
+
+Naive Bayes:
+Accuracy: 0.23284313725490197
+Matriz de Confusión:
+ [[ 36  43   6   0]
+ [189 303  48   0]
+ [518 550 136   0]
+ [ 95 105  11   0]]
+              precision    recall  f1-score   support
+
+        Alto       0.04      0.42      0.08        85
+        Bajo       0.30      0.56      0.39       540
+        Cero       0.68      0.11      0.19      1204
+       Medio       0.00      0.00      0.00       211
+
+    accuracy                           0.23      2040
+   macro avg       0.26      0.27      0.17      2040
+weighted avg       0.48      0.23      0.22      2040
+
+
+Árbol de Decisión (ID3):
+Accuracy: 0.5696078431372549
+Matriz de Confusión:
+ [[ 59   1   0  25]
+ [ 62 263 106 109]
+ [ 69 311 728  96]
+ [ 52  43   4 112]]
+              precision    recall  f1-score   support
+
+        Alto       0.24      0.69      0.36        85
+        Bajo       0.43      0.49      0.45       540
+        Cero       0.87      0.60      0.71      1204
+       Medio       0.33      0.53      0.41       211
+
+    accuracy                           0.57      2040
+   macro avg       0.47      0.58      0.48      2040
+weighted avg       0.67      0.57      0.60      2040
+
+
+k-NN (k=3):
+Accuracy: 0.6426470588235295
+Matriz de Confusión:
+ [[ 39  14  20  12]
+ [ 33 213 258  36]
+ [ 27 164 991  22]
+ [ 34  52  57  68]]
+              precision    recall  f1-score   support
+
+        Alto       0.29      0.46      0.36        85
+        Bajo       0.48      0.39      0.43       540
+        Cero       0.75      0.82      0.78      1204
+       Medio       0.49      0.32      0.39       211
+
+    accuracy                           0.64      2040
+   macro avg       0.50      0.50      0.49      2040
+weighted avg       0.63      0.64      0.63      2040
+
+
+Regresión Logística:
+Accuracy: 0.1965686274509804
+Matriz de Confusión:
+ [[ 39  45   1   0]
+ [201 310  15  14]
+ [553 566  52  33]
+ [ 98 111   2   0]]
+              precision    recall  f1-score   support
+
+        Alto       0.04      0.46      0.08        85
+        Bajo       0.30      0.57      0.39       540
+        Cero       0.74      0.04      0.08      1204
+       Medio       0.00      0.00      0.00       211
+
+    accuracy                           0.20      2040
+   macro avg       0.27      0.27      0.14      2040
+weighted avg       0.52      0.20      0.16      2040
+
+-----------------------------------------------------------------------------------------------------------------------------------
+¡Reentrenamiento y evaluación de modelos completados tras la selección de variables! 🚀
+-----------------------------------------------------------------------------------------------------------------------------------
+Cargando el dataset y explorando los datos...
+Transformando datos y categorizando la variable objetivo...
+Aplicando SMOTE para balancear las clases...
+Tamaño del conjunto de entrenamiento balanceado: (19708, 2)
+
+Aplicando RFE (Recursive Feature Elimination)...
+Variables seleccionadas con RFE: ['country_txt']
+
+Aplicando Sequential Feature Selection (SFS)...
+Variables seleccionadas con SFS: ['country_txt']
+
+Evaluando importancia de variables con Random Forest...
+Importancia de variables según Random Forest:
+ country_txt    0.786779
+iyear          0.213221
+dtype: float64
+
+Aplicando Lasso Regression (L1 Regularization)...
+Variables seleccionadas con Lasso: ['country_txt', 'iyear']
+
+Entrenamiento de modelos con selección de variables aplicada:
+
+Naive Bayes:
+Accuracy: 0.36176470588235293
+Matriz de Confusión:
+ [[ 38  21  22   4]
+ [183 167 146  44]
+ [394 229 512  69]
+ [ 82  59  49  21]]
+              precision    recall  f1-score   support
+
+        Alto       0.05      0.45      0.10        85
+        Bajo       0.35      0.31      0.33       540
+        Cero       0.70      0.43      0.53      1204
+       Medio       0.15      0.10      0.12       211
+
+    accuracy                           0.36      2040
+   macro avg       0.31      0.32      0.27      2040
+weighted avg       0.53      0.36      0.42      2040
+
+
+Árbol de Decisión (ID3):
+Accuracy: 0.6235294117647059
+Matriz de Confusión:
+ [[ 71   3   0  11]
+ [ 27 277 156  80]
+ [ 59 275 805  65]
+ [ 37  42  13 119]]
+              precision    recall  f1-score   support
+
+        Alto       0.37      0.84      0.51        85
+        Bajo       0.46      0.51      0.49       540
+        Cero       0.83      0.67      0.74      1204
+       Medio       0.43      0.56      0.49       211
+
+    accuracy                           0.62      2040
+   macro avg       0.52      0.65      0.56      2040
+weighted avg       0.67      0.62      0.64      2040
+
+
+k-NN (k=3):
+Accuracy: 0.5838235294117647
+Matriz de Confusión:
+ [[ 68   5   1  11]
+ [ 46 284 138  72]
+ [ 80 291 726 107]
+ [ 38  44  16 113]]
+              precision    recall  f1-score   support
+
+        Alto       0.29      0.80      0.43        85
+        Bajo       0.46      0.53      0.49       540
+        Cero       0.82      0.60      0.70      1204
+       Medio       0.37      0.54      0.44       211
+
+    accuracy                           0.58      2040
+   macro avg       0.49      0.62      0.51      2040
+weighted avg       0.66      0.58      0.60      2040
+
+
+Regresión Logística:
+Accuracy: 0.3799019607843137
+Matriz de Confusión:
+ [[ 37  15  31   2]
+ [193 129 193  25]
+ [408 157 604  35]
+ [ 90  38  78   5]]
+              precision    recall  f1-score   support
+
+        Alto       0.05      0.44      0.09        85
+        Bajo       0.38      0.24      0.29       540
+        Cero       0.67      0.50      0.57      1204
+       Medio       0.07      0.02      0.04       211
+
+    accuracy                           0.38      2040
+   macro avg       0.29      0.30      0.25      2040
+weighted avg       0.50      0.38      0.42      2040
+
+-----------------------------------------------------------------------------------------------------------------------------------
+¡Reentrenamiento y evaluación de modelos completados tras la selección de variables Wrapper y Embedded! 🚀
+-----------------------------------------------------------------------------------------------------------------------------------
+Cargando el dataset y explorando los datos...
+
+Optimizando Naive Bayes...
+Mejor configuración para Naive Bayes: {'var_smoothing': np.float64(1.0)}
+
+Optimizando Árbol de Decisión (ID3)...
+Mejor configuración para Árbol de Decisión: {'max_depth': None, 'min_samples_split': 2}
+
+Optimizando k-NN...
+Mejor configuración para k-NN: {'n_neighbors': 3, 'weights': 'uniform'}
+
+Optimizando Regresión Logística...
+Mejor configuración para Regresión Logística: {'C': np.float64(0.0001), 'solver': 'lbfgs'}
+
+Naive Bayes Optimizado:
+Accuracy: 0.23774509803921567
+Matriz de Confusión:
+ [[ 36  43   6   0]
+ [187 303  50   0]
+ [508 550 146   0]
+ [ 95 105  11   0]]
+              precision    recall  f1-score   support
+
+        Alto       0.04      0.42      0.08        85
+        Bajo       0.30      0.56      0.39       540
+        Cero       0.69      0.12      0.21      1204
+       Medio       0.00      0.00      0.00       211
+
+    accuracy                           0.24      2040
+   macro avg       0.26      0.28      0.17      2040
+weighted avg       0.49      0.24      0.23      2040
+
+
+Árbol de Decisión (ID3) Optimizado:
+Accuracy: 0.5696078431372549
+Matriz de Confusión:
+ [[ 59   1   0  25]
+ [ 62 263 106 109]
+ [ 69 311 728  96]
+ [ 52  43   4 112]]
+              precision    recall  f1-score   support
+
+        Alto       0.24      0.69      0.36        85
+        Bajo       0.43      0.49      0.45       540
+        Cero       0.87      0.60      0.71      1204
+       Medio       0.33      0.53      0.41       211
+
+    accuracy                           0.57      2040
+   macro avg       0.47      0.58      0.48      2040
+weighted avg       0.67      0.57      0.60      2040
+
+
+k-NN Optimizado:
+Accuracy: 0.6426470588235295
+Matriz de Confusión:
+ [[ 39  14  20  12]
+ [ 33 213 258  36]
+ [ 27 164 991  22]
+ [ 34  52  57  68]]
+              precision    recall  f1-score   support
+
+        Alto       0.29      0.46      0.36        85
+        Bajo       0.48      0.39      0.43       540
+        Cero       0.75      0.82      0.78      1204
+       Medio       0.49      0.32      0.39       211
+
+    accuracy                           0.64      2040
+   macro avg       0.50      0.50      0.49      2040
+weighted avg       0.63      0.64      0.63      2040
+
+
+Regresión Logística Optimizada:
+Accuracy: 0.1965686274509804
+Matriz de Confusión:
+ [[ 39  45   1   0]
+ [201 310  15  14]
+ [553 566  52  33]
+ [ 98 111   2   0]]
+              precision    recall  f1-score   support
+
+        Alto       0.04      0.46      0.08        85
+        Bajo       0.30      0.57      0.39       540
+        Cero       0.74      0.04      0.08      1204
+       Medio       0.00      0.00      0.00       211
+
+    accuracy                           0.20      2040
+   macro avg       0.27      0.27      0.14      2040
+weighted avg       0.52      0.20      0.16      2040
+
+
+-------------------------------------------------------------------
+¡Optimización y evaluación de modelos completadas! 🚀
+-------------------------------------------------------------------
+Cargando el dataset y explorando los datos...
+
+Reajustando modelos con configuraciones corregidas...
+
+Realizando Validación Cruzada...
+Validación Cruzada k-NN (Accuracy Promedio): 0.49756763607708876
+
+Probando combinación de modelos con Voting Classifier...
+
+Evaluación de modelos finales:
+
+Naive Bayes:
+Accuracy: 0.23284313725490197
+Matriz de Confusión:
+ [[ 36  43   6   0]
+ [189 303  48   0]
+ [518 550 136   0]
+ [ 95 105  11   0]]
+              precision    recall  f1-score   support
+
+        Alto       0.04      0.42      0.08        85
+        Bajo       0.30      0.56      0.39       540
+        Cero       0.68      0.11      0.19      1204
+       Medio       0.00      0.00      0.00       211
+
+    accuracy                           0.23      2040
+   macro avg       0.26      0.27      0.17      2040
+weighted avg       0.48      0.23      0.22      2040
+
+
+Árbol de Decisión (ID3):
+Accuracy: 0.5759803921568627
+Matriz de Confusión:
+ [[ 56   1   2  26]
+ [ 60 210 160 110]
+ [ 63 201 796 144]
+ [ 46  34  18 113]]
+              precision    recall  f1-score   support
+
+        Alto       0.25      0.66      0.36        85
+        Bajo       0.47      0.39      0.43       540
+        Cero       0.82      0.66      0.73      1204
+       Medio       0.29      0.54      0.37       211
+
+    accuracy                           0.58      2040
+   macro avg       0.46      0.56      0.47      2040
+weighted avg       0.65      0.58      0.60      2040
+
+
+k-NN:
+Accuracy: 0.6426470588235295
+Matriz de Confusión:
+ [[ 39  14  20  12]
+ [ 33 213 258  36]
+ [ 27 164 991  22]
+ [ 34  52  57  68]]
+              precision    recall  f1-score   support
+
+        Alto       0.29      0.46      0.36        85
+        Bajo       0.48      0.39      0.43       540
+        Cero       0.75      0.82      0.78      1204
+       Medio       0.49      0.32      0.39       211
+
+    accuracy                           0.64      2040
+   macro avg       0.50      0.50      0.49      2040
+weighted avg       0.63      0.64      0.63      2040
+
+
+Regresión Logística:
+Accuracy: 0.18235294117647058
+Matriz de Confusión:
+ [[ 39  45   1   0]
+ [213 315   5   7]
+ [580 576  18  30]
+ [ 98 111   2   0]]
+              precision    recall  f1-score   support
+
+        Alto       0.04      0.46      0.08        85
+        Bajo       0.30      0.58      0.40       540
+        Cero       0.69      0.01      0.03      1204
+       Medio       0.00      0.00      0.00       211
+
+    accuracy                           0.18      2040
+   macro avg       0.26      0.26      0.13      2040
+weighted avg       0.49      0.18      0.13      2040
+
+
+Voting Classifier:
+Accuracy: 0.6078431372549019
+Matriz de Confusión:
+ [[ 64   5   8   8]
+ [ 66 273 170  31]
+ [ 67 280 845  12]
+ [ 57  52  44  58]]
+              precision    recall  f1-score   support
+
+        Alto       0.25      0.75      0.38        85
+        Bajo       0.45      0.51      0.47       540
+        Cero       0.79      0.70      0.74      1204
+       Medio       0.53      0.27      0.36       211
+
+    accuracy                           0.61      2040
+   macro avg       0.51      0.56      0.49      2040
+weighted avg       0.65      0.61      0.62      2040
+
+
+-------------------------------------------------------------------
+¡Reajuste, validación cruzada y combinación de modelos completados! 🚀
+-------------------------------------------------------------------
+Cargando el dataset y explorando los datos...
+
+Entrenando modelos principales...
+
+Optimizando combinación de modelos con Voting Classifier...
+
+Implementando Stacking Classifier...
+
+Evaluación de modelos combinados:
+
+Voting Classifier:
+Accuracy: 0.6328431372549019
+Matriz de Confusión:
+ [[ 40   8  18  19]
+ [ 34 202 246  58]
+ [ 30 168 964  42]
+ [ 33  52  41  85]]
+              precision    recall  f1-score   support
+
+        Alto       0.29      0.47      0.36        85
+        Bajo       0.47      0.37      0.42       540
+        Cero       0.76      0.80      0.78      1204
+       Medio       0.42      0.40      0.41       211
+
+    accuracy                           0.63      2040
+   macro avg       0.48      0.51      0.49      2040
+weighted avg       0.63      0.63      0.63      2040
+
+
+Stacking Classifier:
+Accuracy: 0.5833333333333334
+Matriz de Confusión:
+ [[ 57   1   2  25]
+ [ 58 182 184 116]
+ [ 58 200 837 109]
+ [ 50  33  14 114]]
+              precision    recall  f1-score   support
+
+        Alto       0.26      0.67      0.37        85
+        Bajo       0.44      0.34      0.38       540
+        Cero       0.81      0.70      0.75      1204
+       Medio       0.31      0.54      0.40       211
+
+    accuracy                           0.58      2040
+   macro avg       0.45      0.56      0.47      2040
+weighted avg       0.64      0.58      0.60      2040
+
+
+-------------------------------------------------------------------
+¡Optimización, Voting y Stacking completados! 🚀
+-------------------------------------------------------------------
+Cargando el dataset y explorando los datos...
+
+Entrenando modelos principales...
+
+Optimizando combinación de modelos con Weighted Voting Classifier...
+
+Probando Stacking Classifier con Regresión Logística...
+
+Evaluación de modelos combinados optimizados:
+
+Weighted Voting Classifier:
+Accuracy: 0.6377450980392156
+Matriz de Confusión:
+ [[ 32  13  21  19]
+ [ 28 199 262  51]
+ [ 24 154 993  33]
+ [ 27  49  58  77]]
+              precision    recall  f1-score   support
+
+        Alto       0.29      0.38      0.33        85
+        Bajo       0.48      0.37      0.42       540
+        Cero       0.74      0.82      0.78      1204
+       Medio       0.43      0.36      0.39       211
+
+    accuracy                           0.64      2040
+   macro avg       0.48      0.48      0.48      2040
+weighted avg       0.62      0.64      0.63      2040
+
+
+Stacking Classifier con Regresión Logística:
+Accuracy: 0.5931372549019608
+Matriz de Confusión:
+ [[ 54   2   5  24]
+ [ 56 196 176 112]
+ [ 54 191 842 117]
+ [ 43  35  15 118]]
+              precision    recall  f1-score   support
+
+        Alto       0.26      0.64      0.37        85
+        Bajo       0.46      0.36      0.41       540
+        Cero       0.81      0.70      0.75      1204
+       Medio       0.32      0.56      0.41       211
+
+    accuracy                           0.59      2040
+   macro avg       0.46      0.56      0.48      2040
+weighted avg       0.64      0.59      0.61      2040
+
+
+-------------------------------------------------------------------
+¡Optimización avanzada de combinaciones de modelos completada! 🚀
+-------------------------------------------------------------------
+Cargando el dataset y explorando los datos...
+
+Entrenando modelos principales...
+
+Optimizando pesos en Weighted Voting Classifier...
+
+Probando Stacking Classifier con Random Forest como meta-modelo...
+
+Evaluación de modelos combinados optimizados:
+
+Optimized Weighted Voting Classifier:
+Accuracy: 0.6357843137254902
+Matriz de Confusión:
+ [[ 40   8  18  19]
+ [ 34 200 248  58]
+ [ 30 160 972  42]
+ [ 33  52  41  85]]
+              precision    recall  f1-score   support
+
+        Alto       0.29      0.47      0.36        85
+        Bajo       0.48      0.37      0.42       540
+        Cero       0.76      0.81      0.78      1204
+       Medio       0.42      0.40      0.41       211
+
+    accuracy                           0.64      2040
+   macro avg       0.49      0.51      0.49      2040
+weighted avg       0.63      0.64      0.63      2040
+
+
+Stacking Classifier con Random Forest:
+Accuracy: 0.5700980392156862
+Matriz de Confusión:
+ [[ 56   1   1  27]
+ [ 60 217 154 109]
+ [ 63 260 778 103]
+ [ 46  38  15 112]]
+              precision    recall  f1-score   support
+
+        Alto       0.25      0.66      0.36        85
+        Bajo       0.42      0.40      0.41       540
+        Cero       0.82      0.65      0.72      1204
+       Medio       0.32      0.53      0.40       211
+
+    accuracy                           0.57      2040
+   macro avg       0.45      0.56      0.47      2040
+weighted avg       0.64      0.57      0.59      2040
+
+
+-------------------------------------------------------------------
+¡Optimización finalizada! Weighted Voting y Stacking con Random Forest evaluados! 🚀
+-------------------------------------------------------------------
