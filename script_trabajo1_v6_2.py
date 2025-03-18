@@ -60,7 +60,7 @@ lr_preds = lr_model.predict(X_test)
 
 # 6. Evaluación de modelos con matriz de confusión y métricas detalladas
 def evaluar_modelo(nombre, y_true, y_pred):
-    print(f"\n🔹 {nombre}:")
+    print(f"\n{nombre}:")
     print("Accuracy:", accuracy_score(y_true, y_pred))
     print("Matriz de Confusión:\n", confusion_matrix(y_true, y_pred))
     print(classification_report(y_true, y_pred, zero_division=0))
