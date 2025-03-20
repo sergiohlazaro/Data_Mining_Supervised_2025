@@ -2,104 +2,104 @@
 Hemos probado 6 modelos de clasificación supervisada y ahora analizaremos sus resultados en términos teóricos y prácticos. 
 Nos enfocaremos en accuracy, precision, recall, f1-score y la matriz de confusión para cada modelo.
 
-📌 1. Naive Bayes
-    📈 Accuracy: 36.17% (el peor modelo).
+1. Naive Bayes
+    Accuracy: 36.17% (el peor modelo).
 
-    🔍 Interpretación teórica:
+    Interpretación teórica:
 
     - Naive Bayes asume independencia entre las variables predictoras, lo cual no se cumple en este dataset.
     - Tiende a favorecer la clase mayoritaria ("Cero"), lo que provoca baja precisión en las demás clases.
     - La clase "Alto" solo tiene un 5% de precisión, lo que indica que no se está clasificando bien.
 
-    📊 Conclusión:
-    ❌ Modelo descartado. No es adecuado para este problema debido a la fuerte dependencia entre iyear y country_txt.
+    Conclusión:
+    Modelo descartado. No es adecuado para este problema debido a la fuerte dependencia entre iyear y country_txt.
 
-📌 2. Árbol de Decisión (ID3)
-    📈 Accuracy: 62.30% (mejor que Naive Bayes y J48).
+2. Árbol de Decisión (ID3)
+    Accuracy: 62.30% (mejor que Naive Bayes y J48).
 
-    🔍 Interpretación teórica:
+    Interpretación teórica:
 
     - ID3 usa la entropía para dividir los datos, lo que le permite manejar datos categóricos y continuos.
     - Mejor precisión y recall en todas las clases en comparación con Naive Bayes.
     - Clase "Alto" mejora a un 37% de precisión y 84% de recall, lo que indica que puede identificar estos casos.
 
-    📊 Conclusión:
+    Conclusión:
     ✅ Modelo prometedor. Puede mejorarse con poda de ramas o con un modelo más avanzado como Random Forest.
 
-📌 3. J48 (ID3 con poda)
-    📈 Accuracy: 45.49% (peor que ID3).
+3. J48 (ID3 con poda)
+    Accuracy: 45.49% (peor que ID3).
 
-    🔍 Interpretación teórica:
+    Interpretación teórica:
 
     - J48 es ID3 mejorado con poda, lo que evita el sobreajuste.
     - Sin embargo, la poda ha reducido demasiado la capacidad predictiva del modelo.
     - Baja precisión en la clase "Alto" y "Medio", lo que indica que el modelo se ha vuelto demasiado simple.
 
-    📊 Conclusión:
-    ❌ Modelo descartado en su forma actual. Podríamos probar una versión con un ajuste de profundidad menor (max_depth=15 en vez de max_depth=10).
+    Conclusión:
+    Modelo descartado en su forma actual. Podríamos probar una versión con un ajuste de profundidad menor (max_depth=15 en vez de max_depth=10).
 
-📌 4. IB1 (k-NN con k=1)
-    📈 Accuracy: 56.67% (mejor que Naive Bayes y J48, pero peor que ID3).
+4. IB1 (k-NN con k=1)
+    Accuracy: 56.67% (mejor que Naive Bayes y J48, pero peor que ID3).
 
-    🔍 Interpretación teórica:
+    Interpretación teórica:
 
     - IB1 es un clasificador basado en instancias que usa solo el vecino más cercano.
     - Alto recall en la clase "Alto" (80%), pero baja precisión (33%), lo que indica que clasifica muchos casos como "Alto" incorrectamente.
     - Mejor que J48 y Naive Bayes, pero menos estable que ID3.
 
-    📊 Conclusión:
+    Conclusión:
     ✅ Podría mejorar con una mayor cantidad de vecinos (k=3 o k=5).
 
-📌 5. k-NN (k=3)
-    📈 Accuracy: 57.40% (mejor que IB1, pero peor que ID3).
+5. k-NN (k=3)
+    Accuracy: 57.40% (mejor que IB1, pero peor que ID3).
 
-    🔍 Interpretación teórica:
+    Interpretación teórica:
 
     - Usa los 3 vecinos más cercanos para decidir la clase, lo que reduce el impacto de valores atípicos.
     - Mayor precisión en "Alto" que IB1 (28% vs. 33%), pero menor recall (80% vs. 54%).
     - Modelo más estable que IB1, pero aún no supera a ID3.
 
-    📊 Conclusión:
+    Conclusión:
     ✅ Mejor que IB1, pero podríamos probar k=5 para ver si mejora aún más.
 
-📌 6. Regresión Logística
-    📈 Accuracy: 37.99% (similar a Naive Bayes).
+6. Regresión Logística
+    Accuracy: 37.99% (similar a Naive Bayes).
 
-    🔍 Interpretación teórica:
+    Interpretación teórica:
 
     - Funciona bien cuando hay una relación lineal entre las variables y la salida, lo que no parece cumplirse aquí.
     - Baja precisión en todas las clases excepto "Cero" (67% de precisión, pero 50% de recall).
     - Parece favorecer la clase mayoritaria, lo que hace que clases como "Alto" y "Medio" tengan precisión de 5% y 7% respectivamente.
 
-    📊 Conclusión:
-    ❌ Modelo descartado. No es adecuado para este problema.
+    Conclusión:
+    Modelo descartado. No es adecuado para este problema.
 
 [VAMOS A PROCEDER A AJUSTAR LOS HIPERPARÁMETROS DE LOS MODELOS MÁS PROMETEDORES]
 
-📌 Conclusión General de la Optimización
+Conclusión General de la Optimización
 
     ✅ ID3 ya estaba en su mejor configuración, por lo que la optimización no tuvo efecto.
     ❌ k-NN con weights="distance" no mejoró, e incluso empeoró levemente.
 
-📌 ¿Qué hacemos ahora?
+¿Qué hacemos ahora?
 
     - Descartar más ajustes en ID3 y probar Random Forest.
     - En k-NN, probar k=5 y k=7 para ver si mejora.
     - Pasar a la selección de variables para ver si reduce el ruido y mejora los modelos.
 
-📌 Comparación de Random Forest con Árbol de Decisión (ID3)
-📌 ¿Qué pasó?
+Comparación de Random Forest con Árbol de Decisión (ID3)
+¿Qué pasó?
 
     - Esperábamos que Random Forest superara ID3, pero su rendimiento es ligeramente peor.
     - Posible razón: Al usar max_depth=15, limitamos su capacidad de decisión.
     - Sin embargo, Random Forest sigue siendo más robusto porque reduce el sobreajuste.
 
-    📊 Conclusión sobre Random Forest: ✅ Tiene una mejor generalización que ID3, pero la precisión global no mejora.
+    Conclusión sobre Random Forest: ✅ Tiene una mejor generalización que ID3, pero la precisión global no mejora.
 
-📌 Podríamos probar Random Forest con max_depth=None para ver si mejora.
+Podríamos probar Random Forest con max_depth=None para ver si mejora.
 
-📌 Comparación de k-NN (k=3, k=5 y k=7)
-📌 ¿Qué pasó?
+Comparación de k-NN (k=3, k=5 y k=7)
+¿Qué pasó?
 
     - Aumentar k a 5 y 7 no mejoró el rendimiento, sino que lo redujo.
     - Esto indica que los puntos cercanos tienen más información relevante, por lo que valores más altos de k introducen ruido.
@@ -108,66 +108,66 @@ Nos enfocaremos en accuracy, precision, recall, f1-score y la matriz de confusi�
     📊 Conclusión sobre k-NN: ✅ k=3 sigue siendo la mejor opción.
     ❌ k=5 y k=7 reducen la precisión, lo que indica que el modelo es más sensible a vecinos cercanos.
 
-📌 Comparación de Random Forest (max_depth=15 vs. max_depth=None)
-📌 ¿Qué pasó?
+Comparación de Random Forest (max_depth=15 vs. max_depth=None)
+¿Qué pasó?
 
     - Reducir max_depth a 15 mejoraba la generalización.
     - Sin límite de profundidad, el modelo se sobreajusta, perdiendo capacidad predictiva en datos nuevos.
     - Bajó la precisión en todas las clases, especialmente en "Cero" y "Bajo".
 
-    📊 Conclusión:
-    ❌ max_depth=None no es recomendable para este dataset.
-    ✅ Random Forest con max_depth=15 sigue siendo mejor opción.
+    Conclusión:
+    max_depth=None no es recomendable para este dataset.
+    Random Forest con max_depth=15 sigue siendo mejor opción.
 
 
-📌 Comparación con ID3 (Árbol de Decisión)
+Comparación con ID3 (Árbol de Decisión)
 
-    📊 Conclusión General:
+    Conclusión General:
     
     1️. ID3 sigue siendo el mejor modelo hasta ahora.
     2️. Random Forest con max_depth=15 sigue siendo la mejor versión de Random Forest.
     3️. max_depth=None causa sobreajuste y pierde capacidad predictiva.
 
-🔹 ¿Podemos mejorar Random Forest?
+¿Podemos mejorar Random Forest?
 
 - Podríamos probar tres ajustes adicionales, pero hay razones para creer que no cambiarán radicalmente los resultados:
 
 1️. Aumentar n_estimators (número de árboles)
 
-📌 ¿Por qué podría ayudar?
+¿Por qué podría ayudar?
 
     - Más árboles pueden estabilizar la predicción y reducir la varianza.
     - Sin embargo, ya estamos usando 100 árboles, lo cual es un número razonable.
 
-📌 ¿Por qué podría no servir?
+¿Por qué podría no servir?
 
     - El dataset no es tan grande, por lo que más árboles pueden aumentar el tiempo de cómputo sin mejorar la precisión.
     - ID3 ya está funcionando bien con un solo árbol, lo que indica que Random Forest no tiene una ventaja clara en esta tarea.
 
 2️. Probar otros criterios de división (criterion="gini" vs. "entropy")
 
-📌 ¿Por qué podría ayudar?
+¿Por qué podría ayudar?
 
     - "gini" puede ser más eficiente en algunos casos.
     - "entropy" (actualmente usado) es más preciso en datasets con clases desbalanceadas.
 
-📌 ¿Por qué podría no servir?
+¿Por qué podría no servir?
 
     - Ya usamos "entropy" en ID3, que ha demostrado ser el mejor modelo.
     - Cambiar a "gini" rara vez produce mejoras significativas en problemas similares.
 
 3️. Probar min_samples_split y min_samples_leaf
 
-📌 ¿Por qué podría ayudar?
+¿Por qué podría ayudar?
 
     - Ajustar estos valores puede hacer que el modelo aprenda menos ruido.
 
-📌 ¿Por qué podría no servir?
+¿Por qué podría no servir?
 
     - ID3 ya está funcionando bien sin necesidad de ajustes tan finos.
     - Si la selección de variables mejora el dataset, el impacto en la precisión será mayor que cualquier ajuste fino en Random Forest.
 
-📌 Reflexión Final: ¿Vale la pena seguir optimizando Random Forest?
+Reflexión Final: ¿Vale la pena seguir optimizando Random Forest?
 
 ❌ No, no tiene sentido seguir optimizando Random Forest en este punto.
 ✅ Es más estratégico probar la selección de variables y después ver si Random Forest mejora con un dataset más limpio.
