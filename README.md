@@ -86,7 +86,7 @@ Se utilizaron técnicas como `GridSearchCV` para ajustar hiperparámetros:
 | Naive Bayes | `var_smoothing=1.0` |
 | Regresión Logística | `C=0.0001`, `solver='lbfgs'` |
 
-📈 **Impacto:** La optimización mejoró k-NN e ID3, pero **Naive Bayes y Regresión Logística no se beneficiaron**.
+**Impacto:** La optimización mejoró k-NN e ID3, pero **Naive Bayes y Regresión Logística no se beneficiaron**.
 
 ---
 ## 📊 Validación del Modelo
