@@ -1,0 +1,2 @@
+,Accuracy,F1,Precision,Recall
+Decision Tree (J48-SMOTE),0.9318,0.7231,0.5869,0.9429

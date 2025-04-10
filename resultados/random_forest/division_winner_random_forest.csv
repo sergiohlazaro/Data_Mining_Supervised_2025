@@ -1,0 +1,2 @@
+,Accuracy,F1,Precision,Recall
+Random Forest (100 trees),0.9968,0.9823,1.0,0.9654

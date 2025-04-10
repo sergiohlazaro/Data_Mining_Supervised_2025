@@ -1,0 +1,3 @@
+,Accuracy,F1,Precision,Recall
+VotingClassifier,0.9569,0.0436,0.28,0.025
+StackingClassifier,0.9558,0.1023,0.4309,0.0667
