@@ -178,7 +178,7 @@ metricas = {
     'Recall': make_scorer(recall_score, zero_division=0)
 }
 
-def evaluar_modelos(df, target, modelos, metricas):
+def evaluar_modelos(df, target, modelos, metricas, carpeta_resultado="resultados/modelos_supervisados", sufijo="_resultados_modelos"):
     print(f"\n📊 Resultados para target: '{target}'")
     X = df.drop(columns=target_vars)
     y = df[target]
@@ -192,12 +192,13 @@ def evaluar_modelos(df, target, modelos, metricas):
             resultados[nombre][metrica_nombre] = round(mean_score, 4)
             print(f"   {metrica_nombre}: {mean_score:.4f}")
     resultados_df = pd.DataFrame(resultados).T
-    resultados_df.to_csv(f"resultados/modelos_supervisados/{target}_resultados_modelos.csv")
+    Path(carpeta_resultado).mkdir(parents=True, exist_ok=True)
+    resultados_df.to_csv(f"{carpeta_resultado}/{target}{sufijo}.csv")
     return resultados_df
 
 resultados_modelado = {}
 for target in target_vars:
-    resultados_modelado[target] = evaluar_modelos(df_clean, target, modelos, metricas)
+    resultados_modelado[target] = evaluar_modelos(df_clean, target, modelos, metricas, "resultados/modelos_supervisados", "_supervisado")
 
 for target, df_resultados in resultados_modelado.items():
     for metrica in df_resultados.columns:
@@ -228,8 +229,7 @@ for target in target_vars:
             ('tree', DecisionTreeClassifier(criterion='entropy', ccp_alpha=0.01, random_state=42))
         ])
     }
-    resultados_j48_smote[target] = evaluar_modelos(df_clean, target, modelos_j48_smote, metricas)
-    resultados_j48_smote[target].to_csv(f"resultados/j48_smote/{target}_j48_smote.csv")
+    resultados_j48_smote[target] = evaluar_modelos(df_clean, target, modelos_j48_smote, metricas, "resultados/j48_smote", "_smote")
 
 # -------------------------------
 # VISUALIZACIÓN DE RESULTADOS - J48 CON SMOTE
@@ -257,8 +257,7 @@ rf_modelos = {
 resultados_rf = {}
 for target in target_vars:
     print(f"\n🌲 Random Forest para target: {target}")
-    resultados_rf[target] = evaluar_modelos(df_clean, target, rf_modelos, metricas)
-    resultados_rf[target].to_csv(f"resultados/random_forest/{target}_random_forest.csv")
+    resultados_rf[target] = evaluar_modelos(df_clean, target, rf_modelos, metricas, "resultados/random_forest", "_rf")
 
 rf_summary = pd.DataFrame({
     target: resultados_rf[target].loc["Random Forest (100 trees)"]
@@ -298,8 +297,7 @@ combinadores = {
 resultados_ensamble = {}
 for target in target_vars:
     print(f"\n🤝 Clasificadores combinados para target: {target}")
-    resultados_ensamble[target] = evaluar_modelos(df_clean, target, combinadores, metricas)
-    resultados_ensamble[target].to_csv(f"resultados/combinados/{target}_combinados.csv")
+    resultados_ensamble[target] = evaluar_modelos(df_clean, target, combinadores, metricas, "resultados/combinados", "_combinado")
 
 for target, df_resultados in resultados_ensamble.items():
     for metrica in df_resultados.columns:
@@ -312,4 +310,47 @@ for target, df_resultados in resultados_ensamble.items():
         plt.tight_layout()
         plt.savefig(f"imgs1/combinados/{target}_ensambles_{metrica.lower().replace(' ', '_')}.png")
         plt.close()
+print("\n")
+
+# -------------------------------
+# TABLA RESUMEN CONSOLIDADA DE RESULTADOS
+# -------------------------------
+import glob
+
+# Función para cargar todos los CSV de una carpeta y combinarlos
+def cargar_resultados_carpeta(ruta_carpeta, sufijo):
+    resumen = []
+    for path_csv in glob.glob(f"{ruta_carpeta}/*{sufijo}.csv"):
+        nombre_target = Path(path_csv).stem.replace(sufijo, "").replace("_", "").replace("__", "_")
+        df = pd.read_csv(path_csv, index_col=0)
+        df['Target'] = nombre_target
+        df['Modelo'] = df.index
+        resumen.append(df)
+    return pd.concat(resumen, axis=0)
+
+# Cargar todos los resultados
+df_supervisados = cargar_resultados_carpeta("resultados/modelos_supervisados", "_supervisado")
+df_j48_smote = cargar_resultados_carpeta("resultados/j48_smote", "_smote")
+df_rf = cargar_resultados_carpeta("resultados/random_forest", "_rf")
+df_combinados = cargar_resultados_carpeta("resultados/combinados", "_combinado")
+
+# Consolidar en una sola tabla
+df_consolidado = pd.concat([
+    df_supervisados.assign(Tipo="Modelos Supervisados"),
+    df_j48_smote.assign(Tipo="J48 + SMOTE"),
+    df_rf.assign(Tipo="Random Forest"),
+    df_combinados.assign(Tipo="Combinados"),
+])
+
+# Reordenar columnas
+columnas_finales = ['Target', 'Tipo', 'Modelo', 'Accuracy', 'F1', 'Precision', 'Recall']
+df_consolidado = df_consolidado[columnas_finales]
+
+# Guardar la tabla consolidada
+Path("resultados/resumen").mkdir(parents=True, exist_ok=True)
+df_consolidado.to_csv("resultados/resumen/resumen_modelos.csv", index=False)
+
+# Mostrar por pantalla
+print("📊 Tabla resumen de todos los modelos:")
+print(df_consolidado.to_string(index=False))
 print("\n")

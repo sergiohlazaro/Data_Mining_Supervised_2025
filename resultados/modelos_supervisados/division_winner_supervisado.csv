@@ -1,0 +1,7 @@
+,Accuracy,F1,Precision,Recall
+KNN (k=1),0.8696,0.304,0.3012,0.3077
+KNN (k=3),0.8948,0.3255,0.4041,0.2731
+Naive Bayes,0.7022,0.3537,0.2222,0.8692
+Decision Tree (entropy),0.9968,0.9827,0.9851,0.9808
+Decision Tree (J48-like),0.9946,0.972,0.953,0.9923
+Logistic Regression,0.9231,0.4729,0.66,0.3692
