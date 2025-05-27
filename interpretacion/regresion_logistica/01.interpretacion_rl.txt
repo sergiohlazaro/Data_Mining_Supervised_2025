@@ -1,0 +1,17 @@
+Hemos iniciado la sección de interpretación con un gráfico de barras que muestra cómo la regresión logística asigna importancia (coeficientes),
+a las variables para predecir cada uno de los tres targets (division_winner, league_winner, world_series_winner).
+
+Interpretación de la Regresión Logística
+
+En regresión logística:
+
+- Coeficientes positivos indican que un aumento en la variable aumenta la probabilidad de que la clase sea 1 (es decir, el equipo gane).
+- Coeficientes negativos indican una relación inversa.
+
+Ejemplos concretos:
+
+- Para division_winner, tener una mejor posición (rank negativo) y más wins (positivo) son determinantes.
+- Para league_winner, las variables wins y fielding_percentage son claves, mientras que cometer más errors reduce las probabilidades.
+- Para world_series_winner, league_winner (lógico), fielding_percentage y saves ayudan, pero muchos errors perjudican.
+
+

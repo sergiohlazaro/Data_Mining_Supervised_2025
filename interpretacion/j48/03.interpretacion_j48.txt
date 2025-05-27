@@ -1,0 +1,37 @@
+El modelo J48-like que se ha utilizado corresponde a una implementación similar al C4.5, 
+que genera árboles de decisión basados en entropía y ganancia de información.
+
+¿Cómo funciona?
+
+- Divide los datos en función de la variable que mayor ganancia de información proporciona para clasificar correctamente las clases objetivo (por ejemplo, rank, games_played, etc.).
+- Cada nodo interno representa una condición sobre una variable (por ejemplo, rank <= 2.5), y cada hoja representa una predicción.
+- Utiliza entropía como criterio de división y poda ligera (ccp_alpha = 0.01) para evitar sobreajuste.
+
+Interpretación por Target
+
+1. division_winner
+
+- F1: 0.9720, Precision: 0.9530, Recall: 0.9923
+- El árbol predice de forma excelente los campeones de división.
+- Probablemente la primera división se basa en rank y games_played.
+- Alto recall indica que casi todos los verdaderos positivos se capturan (bajo FN).
+- Muy útil para sistemas de recomendación o ranking de equipos.
+
+2. league_winner
+
+- F1: 0.7048, Precision: 0.5529, Recall: 0.9734
+- En este caso el árbol prioriza recall, clasificando bien los casos positivos (muchos verdaderos positivos), a costa de más falsos positivos.
+- Variables relevantes pueden ser division_winner, saves, errors.
+
+3. world_series_winner
+
+- F1: 0.4071, Precision: 0.2703, Recall: 0.8250
+- Buen recall pero baja precisión: el árbol identifica muchos posibles ganadores, pero se equivoca bastante.
+- Útil si se quiere minimizar falsos negativos, aunque se sacrifiquen FP.
+
+Conclusión y utilidad del modelo
+
+- Interpretabilidad media-alta: el árbol se puede visualizar como una secuencia lógica de condiciones.
+- Ideal para análisis causal o generación de reglas de negocio automáticas.
+- Funciona especialmente bien para division_winner, y es competitivo en league_winner.
+- Puede complementarse con modelos como JRip o regresión logística para una visión más robusta.

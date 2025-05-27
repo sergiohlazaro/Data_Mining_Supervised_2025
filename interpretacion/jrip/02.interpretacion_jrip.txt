@@ -1,0 +1,20 @@
+Interpretación del Modelo JRip (Reglas)
+
+JRip (una implementación de RIPPER) genera reglas transparentes y fáciles de interpretar. 
+Cada regla representa una combinación de condiciones que, si se cumplen, predicen una clase.
+
+Puntos clave:
+
+- Número de reglas: JRip generó entre 4 y 12 reglas por target. Esto indica una estructura interpretable y compacta.
+
+Reglas relevantes:
+
+- division_winner: (rank = 1) and (games_played = 162) => division_winner = 1 refleja que quedar primero en la clasificación y jugar todos los partidos te convierte en campeón de división.
+- league_winner: (division_winner = 1) and (world_series_winner = 1) => league_winner = 1 destaca una relación lógica entre ganar la división y la liga.
+- world_series_winner: (league_winner = 1) and (saves = 15) muestra cómo un equipo campeón de liga con buen rendimiento defensivo puede ganar la Serie Mundial.
+
+- Métricas destacadas:
+
+- Todos los targets superan el 96% en accuracy.
+- El modelo es muy equilibrado, con valores de precisión, recall y F1 muy cercanos, lo que indica que acierta tanto positivos como negativos.
+- Interpretabilidad alta, ideal para explicar decisiones a no expertos.
