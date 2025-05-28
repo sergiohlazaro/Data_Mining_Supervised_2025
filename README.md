@@ -1,4 +1,4 @@
-# 📊 Práctica 1 - Minería de Datos: Análisis de Datos
+# 📊 Minería de Datos: Clasificación Supervisada
 
 Este proyecto corresponde a la **Práctica 1** de la asignatura **Minería de Datos (Grado en Ingeniería Informática)**, en la que se realiza un proceso completo de análisis, preprocesamiento, selección de variables y modelado sobre un conjunto de datos de equipos de béisbol (MLB).
 
