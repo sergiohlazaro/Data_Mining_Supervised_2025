@@ -129,6 +129,3 @@ Para ejecutar el script:
 
 ```bash
 python script_trabajo1.py
-
----
-
