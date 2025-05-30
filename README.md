@@ -69,11 +69,11 @@ Se ha utilizado un dataset con información histórica de los equipos de béisbo
 
 ### 4. Modelado Supervisado
 Modelos aplicados:
-- KNN (k=1, k=3)
-- Naive Bayes
-- Árbol de decisión (entropy)
-- Árbol tipo J48 (con poda)
-- Regresión Logística
+- KNN (k=1, k=3).
+- Naive Bayes.
+- Árbol de decisión (entropy).
+- Árbol tipo J48 (con poda).
+- Regresión Logística.
 
 ### 5. Técnicas Avanzadas
 - Árbol con **SMOTE** para datos desbalanceados.
